@@ -1,0 +1,17 @@
+@import '../../styles/_variables.scss';
+
+mat-toolbar.mat-toolbar-single-row {
+  padding: 0 $off-grid-spacing;
+  height: 80px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.company-name {
+  color: $color-grey-3;
+  font-family: 'IBM Plex Sans';
+  font-size: $font-size-16;
+  font-weight: $font-weight-500;
+}

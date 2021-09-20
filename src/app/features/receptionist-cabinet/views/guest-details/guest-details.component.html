@@ -1,0 +1,84 @@
+<a mat-flat-button [disableRipple]="true" id="back-button" (click)="goToReceptionistCabinet()">
+  <mat-icon aria-hidden="false" aria-label="Back to overview">chevron_left</mat-icon>Zurück</a
+>
+<div class="guest-details-container">
+  <div class="column">
+    <div class="guest-details">
+      <h1>Gästeinformationen</h1>
+      <div class="list">
+        <div class="list-item">
+          <p class="list-item-title">Titel</p>
+          <p class="list-item-value"></p>
+        </div>
+        <div class="list-item">
+          <p class="list-item-title">Name</p>
+          <p class="list-item-value">{{ currentGuest.firstName }} {{ currentGuest.lastName }}</p>
+        </div>
+        <div class="list-item">
+          <p class="list-item-title">Status</p>
+          <p class="list-item-value">{{ currentGuest.status }}</p>
+        </div>
+        <div class="list-item">
+          <p class="list-item-title">Firma</p>
+          <p class="list-item-value">{{ currentGuest.company }}</p>
+        </div>
+        <div class="list-item">
+          <p class="list-item-title">Firmenanschrift</p>
+          <p class="list-item-value">{{ currentGuest.companyAddress }}</p>
+        </div>
+
+        <div class="list-item">
+          <p class="list-item-title">Ankunftszeit</p>
+          <p class="list-item-value">{{ currentGuest.arriving }}</p>
+        </div>
+        <div class="list-item">
+          <p class="list-item-title">Abreisezeit</p>
+          <p class="list-item-value">{{ currentGuest.leaving }}</p>
+        </div>
+        <div class="list-item">
+          <p class="list-item-title">Besuchsgrund</p>
+          <p class="list-item-value">{{ currentGuest.typeOfVisit }}</p>
+        </div>
+        <div class="list-item">
+          <p class="list-item-title">Ort / Gebäude</p>
+          <p class="list-item-value">{{ currentGuest.location }}</p>
+        </div>
+        <div class="list-item">
+          <p class="list-item-title">Telefonnummer</p>
+          <p class="list-item-value">{{ currentGuest.phoneNumber }}</p>
+        </div>
+        <div class="list-item">
+          <p class="list-item-title">Alternative Telefonnummer</p>
+          <p class="list-item-value">{{ currentGuest.secondPhoneNumber }}</p>
+        </div>
+        <div class="list-item">
+          <p class="list-item-title">Nummerschildkennung</p>
+          <p class="list-item-value">{{ currentGuest.licensePlateNumber }}</p>
+        </div>
+        <div class="list-item">
+          <p class="list-item-title">E-Mail-Adresse</p>
+          <p class="list-item-value">{{ currentGuest.email }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="guest-details">
+      <h1>Einladender Mitarbeiter</h1>
+      <div class="list">
+        <div class="list-item">
+          <p class="list-item-title">Name</p>
+          <p class="list-item-value">{{ currentGuest.invitedByName }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="cheking-details">
+      <h1>Documents</h1>
+      <div class="list">
+        <div class="list-item">
+          <p>-</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+<div class="title-line">
+  <h1>Gästeübersicht</h1>
+  <div class="title-buttons">
+    <button
+      disabled
+      type="button"
+      mat-flat-button
+      color="primary"
+      id="verify-employee-button"
+      (click)="goToQRCode('employee')"
+    >
+      Mitarbeiterverifizierung
+    </button>
+    <span class="material-icons" id="verify-guest-button" (click)="goToQRCode('guest')"> qr_code_2 </span>
+  </div>
+</div>
+
+<mat-tab-group animationDuration="0ms" (selectedTabChange)="tabClick($event)">
+  <mat-tab label="Angekommen ({{ inBuilding }})"></mat-tab>
+  <mat-tab label="Abgereist ({{ departed }})"></mat-tab>
+</mat-tab-group>
+
+<div class="table-row">
+  <div class="table-header-row">
+    <mat-form-field appearance="outline" [ngClass]="{ hide: true }">
+      <mat-label>Bitte wählen Sie ein Datum aus</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        (dateInput)="addEvent('input', $event)"
+        (dateChange)="addEvent('change', $event)"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker">
+        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <div class="search-row">
+      <input class="input-field" matInput (keyup)="applyFilter($event)" #input />
+      <span class="search-icon"><mat-icon>search</mat-icon></span>
+    </div>
+  </div>
+  <table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Vorname</th>
+      <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+    </ng-container>
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nachname</th>
+      <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+    </ng-container>
+    <ng-container matColumnDef="arriving">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Ankunftszeit</th>
+      <td mat-cell *matCellDef="let element">{{ element.arriving }}</td>
+    </ng-container>
+    <ng-container matColumnDef="leaving">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Abreisezeit</th>
+      <td mat-cell *matCellDef="let element">{{ element.leaving }}</td>
+    </ng-container>
+    <ng-container matColumnDef="invitedByName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Eingeladen von</th>
+      <td mat-cell *matCellDef="let element">{{ element.invitedByName }}</td>
+    </ng-container>
+    <ng-container matColumnDef="location">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Gebäude</th>
+      <td mat-cell *matCellDef="let element">{{ element.location }}</td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+      <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+    </ng-container>
+    <ng-container matColumnDef="actionMenu">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+      <td mat-cell *matCellDef="let element" (click)="goToGuestDetails(element.id)">
+        <mat-icon aria-hidden="false" aria-label="Go to guest details">chevron_right</mat-icon>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="7">Keine Daten entsprechen Ihrer Auswahl "{{ input.value }}"</td>
+    </tr>
+  </table>
+  <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator> -->
+</div>

@@ -1,0 +1,61 @@
+{
+  "features": {
+    "receptionist-cabinet": {
+      "views": {
+        "receptionist-cabinet": {
+          "title": ["SSI Access Management", "Gästeübersicht"],
+          "view-employee-button": ["VERIFY EMPLOYEE", "Mitarbeiterverifizierung"],
+          "tab-title-in-building": ["In building", "Angekommen"],
+          "tab-title-departed": ["Departed", "Abgereist"],
+          "table-date-choose": ["Choose a date", "Bitte wählen Sie ein Datum aus"],
+          "table-date-today": ["Today", "Heute"],
+          "table-header": {
+            "first-name": ["First Name", "Vorname"],
+            "last-name": ["Last Name", "Nachname"],
+            "arriving": ["Arriving", "Ankunftszeit"],
+            "leaving": ["Leaving", "Abreisezeit"],
+            "guest-of": ["Guest of", "Eingeladen von"],
+            "location": ["Location", "Gebäude"],
+            "status": ["Status", "Status"]
+          },
+          "no-data-filter": ["No data matching the filter", "Keine Daten entsprechen Ihrer Auswahl"],
+          "paginator": {
+            "item-perpage": ["Items per page", "Zeilen pro Seite:"],
+            "of": ["of", "von"]
+          }
+        },
+        "guest-details": {
+          "back-button": ["BACK", "Zurück"],
+          "guest-details": {
+            "guest-deatils": ["Guest Deatils", "Gästeinformationen"],
+            "title": ["Title", "Titel"],
+            "name": ["Name", "Name"],
+            "status": ["Status", "Status"],
+            "company": ["Company", "Firma"],
+            "company-address": ["Company Address", "Firmenanschrift"],
+            "arriving": ["Arriving", "Ankunftszeit"],
+            "leaving": ["Leaving", "Abreisezeit"],
+            "type-of-visit": ["Type of Visit", "Besuchsgrund"],
+            "location": ["Location", "Ort / Gebäude"],
+            "phone-number": ["Phone Number", "Telefonnummer"],
+            "secondary-number": ["Second Phone Number", "Alternative Telefonnummer"],
+            "license-plate-numbe": ["License Plate Numbe", "Nummerschildkennung"],
+            "email-address": ["Email Address", "E-Mail-Adresse"]
+          },
+          "guest-of": {
+            "guest-of": ["Guest of", "Einladender Mitarbeiter"],
+            "name": ["Name", "Name"]
+          },
+          "documents": {
+            "documents": ["Documents", "Documents"]
+          }
+        },
+        "qr-code": {
+          "back-button": ["BACK", "Zurück"],
+          "second-screen": ["Show on second screen", "Vollbild"],
+          "print": ["Print", "Drucken"]
+        }
+      }
+    }
+  }
+}

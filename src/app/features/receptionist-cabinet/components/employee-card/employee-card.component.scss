@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  p:nth-of-type(1) {
+    font-weight: 600;
+  }
+}

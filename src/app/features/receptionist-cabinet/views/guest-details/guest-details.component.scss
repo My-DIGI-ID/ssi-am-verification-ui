@@ -1,0 +1,51 @@
+.guest-details-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 37px;
+
+  .column {
+    flex: 50vw;
+
+    .guest-details {
+      font-size: 16px;
+      color: #171717;
+
+      h1 {
+        font-size: 24px;
+        font-weight: 300;
+      }
+
+      .list {
+        display: flex;
+        flex-direction: column;
+
+        .list-item {
+          flex-direction: row;
+          display: flex;
+          margin-bottom: 16px;
+
+          p {
+            flex: 50%;
+            margin: initial;
+          }
+
+          .list-item-title {
+            font-weight: 300;
+          }
+
+          .list-item-value {
+            font-weight: 400;
+          }
+        }
+      }
+    }
+  }
+}
+
+#back-button {
+  color: #111da5;
+  font-size: 14px;
+  font-weight: 600;
+  padding-left: 0;
+  text-transform: uppercase;
+}
