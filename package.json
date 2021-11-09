@@ -9,7 +9,7 @@
     "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
+    "test:headless": "ng test --watch=false --browsers=Headless_Chrome",
     "prepare": "husky install",
     "format": "prettier --write \"**/*.{ts,js,json,html,css,scss,md}\"",
     "pre-commit": "npm run format && npm run lint && npm run test-headless"
