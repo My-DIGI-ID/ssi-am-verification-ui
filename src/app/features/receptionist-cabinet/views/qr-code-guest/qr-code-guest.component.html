@@ -1,0 +1,22 @@
+<div class="qr-code">
+  <a mat-flat-button [disableRipple]="true" id="back-button" (click)="goToReceptionistCabinet()">
+    <mat-icon aria-hidden="false" aria-label="Back to overview">chevron_left</mat-icon>Zurück</a
+  >
+  <div class="center">
+    <div class="border">
+      <div id="qr-code-title">
+        CHECK-
+        <p class="bold-title">IN & OUT</p>
+      </div>
+
+      <div class="qr-code-container">
+        <qrcode [qrdata]="qrData" [width]="qrSize" [margin]="qrMargin"></qrcode>
+      </div>
+      <div class="button-container">
+        <button type="button" mat-flat-button color="primary" id="second-screen-button">Vollbild</button>
+        <button type="button" mat-flat-button color="primary" id="print-button">Drucken</button>
+      </div>
+    </div>
+  </div>
+  <button type="button" mat-flat-button color="primary" id="check-out-button">Check out</button>
+</div>

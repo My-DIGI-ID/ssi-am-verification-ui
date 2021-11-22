@@ -16,11 +16,18 @@ import EmployeeCredentialApiService from './services/api/employee-credential-api
 import ReceptionistCabinetStoreService from './services/store/receptionist-cabinet.store.service';
 import ReceptionistCabinetComponent from './views/receptionist-cabinet/receptionist-cabinet.component';
 import EmployeeCardComponent from './components/employee-card/employee-card.component';
-import { QrCodeComponent } from './views/qr-code/qr-code.component';
+import { QrCodeGuestComponent } from './views/qr-code-guest/qr-code-guest.component';
 import { GuestDetailsComponent } from './views/guest-details/guest-details.component';
+import { QrCodeEmployeeComponent } from './views/qr-code-employee/qr-code-employee.component';
 
 @NgModule({
-  declarations: [ReceptionistCabinetComponent, EmployeeCardComponent, QrCodeComponent, GuestDetailsComponent],
+  declarations: [
+    ReceptionistCabinetComponent,
+    EmployeeCardComponent,
+    QrCodeGuestComponent,
+    QrCodeEmployeeComponent,
+    GuestDetailsComponent,
+  ],
   imports: [
     CommonModule,
     ReceptionistCabinetRoutingModule,

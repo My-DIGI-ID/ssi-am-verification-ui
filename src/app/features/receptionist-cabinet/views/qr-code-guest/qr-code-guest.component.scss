@@ -1,0 +1,77 @@
+@import '../../../../../styles/variables';
+
+#back-button {
+  color: blue;
+  text-transform: uppercase;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid #707070;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+
+  .border {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 645px;
+    width: 630px;
+    border: 1px solid #979797;
+    border-radius: 6px;
+
+    #qr-code-title {
+      width: 300px;
+      margin-top: 80px;
+      color: #2019e0;
+      font-size: 24px;
+      font-weight: 300;
+      text-align: center;
+
+      .bold-title {
+        font-weight: 800;
+        display: inline;
+      }
+    }
+
+    .qr-code-container {
+      margin: 53px 0 40px 0;
+    }
+
+    .button-container {
+      display: flex;
+
+      #second-screen-button {
+        height: 42px;
+        width: 110px;
+        border: 1px solid #b9b9b9;
+        border-radius: 6px;
+        background-color: white;
+        color: #b9b9b9;
+        margin-right: 20px;
+        text-transform: uppercase;
+      }
+
+      #print-button {
+        height: 42px;
+        width: 138px;
+        border-radius: 6px;
+        background-color: #2019e0;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+#check-out-button {
+  float: right;
+  height: 42px;
+  width: 110px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  background-color: #dcdcdc;
+  color: #a3a3a3;
+  text-transform: uppercase;
+}
