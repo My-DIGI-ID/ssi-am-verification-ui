@@ -1,5 +1,12 @@
-<mat-toolbar role="heading">
-  <span class="company-name">SSI Zugangsmanagement</span>
+<mat-toolbar role="banner">
+  <span>SSI Zugangsmanagement</span>
   <span class="spacer"></span>
-  <div class="avatar"></div>
+  <p>{{ loggedInUser }}</p>
+  <div class="avatar">
+    <mat-icon class="account-icon" attr.aria-label="logout" type="button">account_circle</mat-icon>
+  </div>
+  <p class="logout" *ngIf="loggedInUser" (click)="logout()">
+    <mat-icon class="logout-icon">logout</mat-icon>
+    <span class="logout-text">LOGOUT</span>
+  </p>
 </mat-toolbar>

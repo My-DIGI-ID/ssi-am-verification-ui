@@ -1,14 +1,7 @@
 <div class="title-line">
   <h1>Gästeübersicht</h1>
   <div class="title-buttons">
-    <button
-      disabled
-      type="button"
-      mat-flat-button
-      color="primary"
-      id="verify-employee-button"
-      (click)="goToQRCode('employee')"
-    >
+    <button type="button" mat-flat-button color="primary" id="verify-employee-button" (click)="goToQRCode('employee')">
       Mitarbeiterverifizierung
     </button>
     <span class="material-icons" id="verify-guest-button" (click)="goToQRCode('guest')"> qr_code_2 </span>

@@ -1,7 +1,6 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
-/* eslint-disable max-classes-per-file */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-restricted-globals */
 import { Component, OnDestroy, OnInit, ViewChild, DoCheck } from '@angular/core';
@@ -11,9 +10,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { UpdateAvailableEvent } from '@angular/service-worker';
-import NgswService from '@shared/services/ngsw.service';
 import { Observable, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import NgswService from '../../../../shared/services/ngsw.service';
 import { MyDateAdapter } from '../../../../shared/utilities/date-adapter';
 import GuestStoreService from '../../services/store/guest.store.service';
 import GuestDetailsViewModel from '../../models/guest-details-view.model';

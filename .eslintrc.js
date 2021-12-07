@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    jasmine: true,
   },
   overrides: [
     {
@@ -17,6 +18,9 @@ module.exports = {
       plugins: ['@typescript-eslint', 'prettier'],
       rules: {
         'no-unused-vars': 'off',
+        'no-shadow': 'off',
+        'import/prefer-default-export': 'off',
+        '@typescript-eslint/no-shadow': ['error'],
         '@typescript-eslint/no-unused-vars': [2, { args: 'after-used', argsIgnorePattern: '^_' }],
         'no-useless-constructor': 'off',
         '@typescript-eslint/no-useless-constructor': ['error'],

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { QrCodeEmployeeComponent } from './views/qr-code-employee/qr-code-employee.component';
 import { GuestDetailsComponent } from './views/guest-details/guest-details.component';
 import AuthenticationGuard from '../../core/authentication/authentication.guard';
 import ReceptionistCabinetComponent from './views/receptionist-cabinet/receptionist-cabinet.component';
@@ -7,8 +8,14 @@ import { QrCodeGuestComponent } from './views/qr-code-guest/qr-code-guest.compon
 
 const routes: Routes = [
   {
-    path: 'qr-code/:id',
+    path: 'qr-code/guest',
     component: QrCodeGuestComponent,
+    canActivate: [AuthenticationGuard],
+    data: { roles: ['controlling-authority'] },
+  },
+  {
+    path: 'qr-code/employee',
+    component: QrCodeEmployeeComponent,
     canActivate: [AuthenticationGuard],
     data: { roles: ['controlling-authority'] },
   },

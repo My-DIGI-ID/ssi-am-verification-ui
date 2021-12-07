@@ -1,3 +1,4 @@
+import { MatIconModule } from '@angular/material/icon';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,6 +25,7 @@ import AuthenticationModule from './core/authentication/authentication.module';
       registrationStrategy: 'registerWhenStable:30000',
     }),
     MatToolbarModule,
+    MatIconModule,
     AuthenticationModule,
   ],
   providers: [],

@@ -1,7 +1,0 @@
-{
-  "KEYCLOAK_URL": "http://localhost:8100/auth",
-  "KEYCLOAK_REALM": "ssi-am",
-  "KEYCLOAK_CLIENT_ID": "verification-ui",
-  "VERIFICATION_CONTROLLER_BASE_URL": "http://localhost:8081/api/v2",
-  "QR_CODE_BASE_URL": "http://192.168.2.144:8081/api/v2"
-}

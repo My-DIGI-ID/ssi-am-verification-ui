@@ -21,7 +21,7 @@ export default class GuestVerificationApiService {
     return this.http.get<VerificationApiModel[]>(
       `${
         this.configServie.getConfigStatic().VERIFICATION_CONTROLLER_BASE_URL
-      }/guest/verification-process-completion?locationId=1&terminalId=1`
+      }/api/v2/guest/verification-process-completion?locationId=1&terminalId=1`
     );
   }
 }

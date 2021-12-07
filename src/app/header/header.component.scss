@@ -1,17 +1,51 @@
-@import '../../styles/_variables.scss';
+@import '../../styles/variables';
 
 mat-toolbar.mat-toolbar-single-row {
-  padding: 0 $off-grid-spacing;
   height: 80px;
+  padding: 0 $off-grid-spacing;
+  border: 0;
+  background-color: $color-white;
+  font-size: $font-size-16;
+  color: $color-black;
+}
+
+.mat-toolbar {
+  border-bottom: 1px solid $color-white;
+  box-shadow: 0 3px 4px 0 $color-black-opacity-50;
 }
 
 .spacer {
   flex: 1 1 auto;
 }
 
-.company-name {
-  color: $color-grey-3;
-  font-family: 'IBM Plex Sans';
-  font-size: $font-size-16;
-  font-weight: $font-weight-500;
+.avatar {
+  font-size: 32px;
+}
+.account-icon {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  font-size: $font-size-30 !important;
+  margin-left: 30px;
+  background-color: $color-grey-2;
+  color: $color-white;
+  border-radius: 50%;
+}
+
+.logout {
+  margin-left: 50px;
+  color: $color-blue;
+  cursor: pointer;
+
+  .logout-icon {
+    transform: translateY(20%);
+    margin-right: 10px;
+  }
+
+  .logout-text {
+    transform: translateY(20%);
+    font-size: $font-size-14;
+    font-weight: $font-weight-600;
+  }
 }

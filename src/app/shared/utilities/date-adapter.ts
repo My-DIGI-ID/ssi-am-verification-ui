@@ -1,5 +1,4 @@
 /* eslint-disable class-methods-use-this */
-/* eslint-disable import/prefer-default-export */
 import { NativeDateAdapter } from '@angular/material/core';
 
 export class MyDateAdapter extends NativeDateAdapter {
