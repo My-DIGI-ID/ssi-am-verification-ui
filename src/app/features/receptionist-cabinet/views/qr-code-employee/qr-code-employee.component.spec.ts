@@ -1,3 +1,19 @@
+/*
+ * Copyright 2021 Bundesrepublik Deutschland
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 /* eslint-disable dot-notation */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { QRCodeComponent } from 'angularx-qrcode';
@@ -8,6 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
 import ConfigInitService from '../../../../core/authentication/config-init.service';
 import { QrCodeEmployeeComponent } from './qr-code-employee.component';
 import Spy = jasmine.Spy;
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 class ConfigServiceMock {
   init = jasmine.createSpy();
@@ -23,12 +40,19 @@ describe('HeaderComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [QrCodeEmployeeComponent, QRCodeComponent],
-      imports: [HttpClientTestingModule, RouterTestingModule, MatIconModule, MatButtonModule],
-      providers: [{ provide: ConfigInitService, useClass: ConfigServiceMock }],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        MatIconModule,
+        MatButtonModule,
+        TranslateModule.forRoot(),
+      ],
+      providers: [{ provide: ConfigInitService, useClass: ConfigServiceMock }, TranslateService],
     }).compileComponents();
   });
 
   beforeEach(() => {
+    TestBed.inject(TranslateService);
     fixture = TestBed.createComponent(QrCodeEmployeeComponent);
     component = fixture.componentInstance;
     routerSpy = spyOn(component['router'], 'navigateByUrl');

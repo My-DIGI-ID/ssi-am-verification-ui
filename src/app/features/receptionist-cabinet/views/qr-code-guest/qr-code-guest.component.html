@@ -1,22 +1,48 @@
+<!--
+  ~ Copyright 2021 Bundesrepublik Deutschland
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
 <div class="qr-code">
   <a mat-flat-button [disableRipple]="true" id="back-button" (click)="goToReceptionistCabinet()">
-    <mat-icon aria-hidden="false" aria-label="Back to overview">chevron_left</mat-icon>Zurück</a
+    <mat-icon aria-hidden="false" attr.aria-label="{{ 'qr-code-guest-component.back-button-label' | translate }}"
+      >chevron_left</mat-icon
+    >{{ 'qr-code-guest-component.back-button' | translate }}</a
   >
   <div class="center">
     <div class="border">
       <div id="qr-code-title">
-        CHECK-
-        <p class="bold-title">IN & OUT</p>
+        {{ 'qr-code-guest-component.qr-code-title-regular' | translate }}
+        <p class="bold-title">
+          {{ 'qr-code-guest-component.qr-code-title-bold' | translate }}
+        </p>
       </div>
 
       <div class="qr-code-container">
         <qrcode [qrdata]="qrData" [width]="qrSize" [margin]="qrMargin"></qrcode>
       </div>
       <div class="button-container">
-        <button type="button" mat-flat-button color="primary" id="second-screen-button">Vollbild</button>
-        <button type="button" mat-flat-button color="primary" id="print-button">Drucken</button>
+        <button type="button" mat-flat-button color="primary" id="second-screen-button">
+          {{ 'qr-code-guest-component.fullscreen-button' | translate }}
+        </button>
+        <button type="button" mat-flat-button color="primary" id="print-button">
+          {{ 'qr-code-guest-component.print-button' | translate }}
+        </button>
       </div>
     </div>
   </div>
-  <button type="button" mat-flat-button color="primary" id="check-out-button">Check out</button>
+  <button type="button" mat-flat-button color="primary" id="check-out-button">
+    {{ 'qr-code-guest-component.check-out-button' | translate }}
+  </button>
 </div>

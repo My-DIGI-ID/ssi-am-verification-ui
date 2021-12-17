@@ -14,23 +14,15 @@
  * limitations under the License.
  */
 
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import NgswService from '../../../../shared/services/ngsw.service';
-import ReceptionistCabinetComponent from './receptionist-cabinet.component';
-import GuestStoreService from '../../services/store/guest.store.service';
-import GuestVerificationApiService from '../../services/api/guest-verification-api.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReceptionistCabinetEmployeeComponent } from './receptionist-cabinet-employee.component';
 import ConfigInitService from '../../../../core/authentication/config-init.service';
 
 class ConfigServiceMock {
@@ -39,40 +31,28 @@ class ConfigServiceMock {
   getConfigStatic = jasmine.createSpy().and.returnValue({ VERIFICATION_CONTROLLER_BASE_URL: 'myUrl' });
 }
 
-describe('ReceptionistCabinetComponent', () => {
-  let component: ReceptionistCabinetComponent;
-  let fixture: ComponentFixture<ReceptionistCabinetComponent>;
+describe('ReceptionistCabinetEmployeeComponent', () => {
+  let component: ReceptionistCabinetEmployeeComponent;
+  let fixture: ComponentFixture<ReceptionistCabinetEmployeeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ReceptionistCabinetComponent],
+      declarations: [ReceptionistCabinetEmployeeComponent],
       imports: [
         HttpClientTestingModule,
-        ServiceWorkerModule.register('ngsw-worker.js', { enabled: false }),
         RouterTestingModule,
         TranslateModule.forRoot(),
-        MatFormFieldModule,
-        MatInputModule,
         MatIconModule,
-        MatTabsModule,
         BrowserAnimationsModule,
         MatTableModule,
-        MatDatepickerModule,
         MatPaginatorModule,
       ],
-      providers: [
-        NgswService,
-        TranslateService,
-        GuestStoreService,
-        GuestVerificationApiService,
-        { provide: ConfigInitService, useClass: ConfigServiceMock },
-      ],
+      providers: [TranslateService, { provide: ConfigInitService, useClass: ConfigServiceMock }],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReceptionistCabinetComponent);
-    TestBed.inject(TranslateService);
+    fixture = TestBed.createComponent(ReceptionistCabinetEmployeeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

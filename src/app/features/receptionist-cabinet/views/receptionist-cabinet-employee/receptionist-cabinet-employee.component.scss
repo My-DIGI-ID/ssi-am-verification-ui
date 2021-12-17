@@ -26,7 +26,7 @@
     align-items: center;
     cursor: pointer;
 
-    #verify-guest-button {
+    #verify-employee-button {
       height: 42px;
       border-radius: 6px;
       background-color: $color-blue;
@@ -34,7 +34,7 @@
       text-transform: uppercase;
     }
 
-    #verify-guest-icon {
+    #verify-employee-icon {
       color: white;
     }
   }
@@ -44,11 +44,7 @@
   margin-top: 20px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-
-  .hide {
-    visibility: hidden;
-  }
+  justify-content: end;
 
   .search-row {
     display: flex;

@@ -1,62 +1,113 @@
+<!--
+  ~ Copyright 2021 Bundesrepublik Deutschland
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
 <a mat-flat-button [disableRipple]="true" id="back-button" (click)="goToReceptionistCabinet()">
-  <mat-icon aria-hidden="false" aria-label="Back to overview">chevron_left</mat-icon>Zurück</a
->
+  <mat-icon aria-hidden="false" attr.aria-label="{{ 'guest-details-component.back-button-label' | translate }}"
+    >chevron_left </mat-icon
+  >{{ 'guest-details-component.back-button' | translate }}
+</a>
 <div class="guest-details-container">
   <div class="column">
     <div class="guest-details">
-      <h1>Gästeinformationen</h1>
+      <h1>
+        {{ 'guest-details-component.first-column.title' | translate }}
+      </h1>
       <div class="list">
         <div class="list-item">
-          <p class="list-item-title">Titel</p>
+          <p class="list-item-title">
+            {{ 'guest-details-component.first-column.field.title' | translate }}
+          </p>
           <p class="list-item-value"></p>
         </div>
         <div class="list-item">
-          <p class="list-item-title">Name</p>
+          <p class="list-item-title">
+            {{ 'guest-details-component.first-column.field.name' | translate }}
+          </p>
           <p class="list-item-value">{{ currentGuest.firstName }} {{ currentGuest.lastName }}</p>
         </div>
         <div class="list-item">
-          <p class="list-item-title">Status</p>
-          <p class="list-item-value">{{ currentGuest.status }}</p>
+          <p class="list-item-title">
+            {{ 'guest-details-component.first-column.field.status' | translate }}
+          </p>
+          <p *ngIf="currentGuest.status === 'CHECK_IN'" class="list-item-value">
+            {{ 'receptionist-cabinet-component.guest-status.check-in' | translate }}
+          </p>
+          <p *ngIf="currentGuest.status === 'CHECK_OUT'" class="list-item-value">
+            {{ 'receptionist-cabinet-component.guest-status.check-out' | translate }}
+          </p>
         </div>
         <div class="list-item">
-          <p class="list-item-title">Firma</p>
+          <p class="list-item-title">
+            {{ 'guest-details-component.first-column.field.company' | translate }}
+          </p>
           <p class="list-item-value">{{ currentGuest.company }}</p>
         </div>
         <div class="list-item">
-          <p class="list-item-title">Firmenanschrift</p>
+          <p class="list-item-title">
+            {{ 'guest-details-component.first-column.field.company-address' | translate }}
+          </p>
           <p class="list-item-value">{{ currentGuest.companyAddress }}</p>
         </div>
 
         <div class="list-item">
-          <p class="list-item-title">Ankunftszeit</p>
+          <p class="list-item-title">
+            {{ 'guest-details-component.first-column.field.arriving' | translate }}
+          </p>
           <p class="list-item-value">{{ currentGuest.arriving }}</p>
         </div>
         <div class="list-item">
-          <p class="list-item-title">Abreisezeit</p>
+          <p class="list-item-title">
+            {{ 'guest-details-component.first-column.field.leaving' | translate }}
+          </p>
           <p class="list-item-value">{{ currentGuest.leaving }}</p>
         </div>
         <div class="list-item">
-          <p class="list-item-title">Besuchsgrund</p>
+          <p class="list-item-title">
+            {{ 'guest-details-component.first-column.field.type-of-visit' | translate }}
+          </p>
           <p class="list-item-value">{{ currentGuest.typeOfVisit }}</p>
         </div>
         <div class="list-item">
-          <p class="list-item-title">Ort / Gebäude</p>
+          <p class="list-item-title">
+            {{ 'guest-details-component.first-column.field.location' | translate }}
+          </p>
           <p class="list-item-value">{{ currentGuest.location }}</p>
         </div>
         <div class="list-item">
-          <p class="list-item-title">Telefonnummer</p>
+          <p class="list-item-title">
+            {{ 'guest-details-component.first-column.field.phone-number' | translate }}
+          </p>
           <p class="list-item-value">{{ currentGuest.phoneNumber }}</p>
         </div>
         <div class="list-item">
-          <p class="list-item-title">Alternative Telefonnummer</p>
+          <p class="list-item-title">
+            {{ 'guest-details-component.first-column.field.second-phone-number' | translate }}
+          </p>
           <p class="list-item-value">{{ currentGuest.secondPhoneNumber }}</p>
         </div>
         <div class="list-item">
-          <p class="list-item-title">Nummerschildkennung</p>
+          <p class="list-item-title">
+            {{ 'guest-details-component.first-column.field.license-plate-number' | translate }}
+          </p>
           <p class="list-item-value">{{ currentGuest.licensePlateNumber }}</p>
         </div>
         <div class="list-item">
-          <p class="list-item-title">E-Mail-Adresse</p>
+          <p class="list-item-title">
+            {{ 'guest-details-component.first-column.field.email' | translate }}
+          </p>
           <p class="list-item-value">{{ currentGuest.email }}</p>
         </div>
       </div>
@@ -64,16 +115,20 @@
   </div>
   <div class="column">
     <div class="guest-details">
-      <h1>Einladender Mitarbeiter</h1>
+      <h1>
+        {{ 'guest-details-component.second-column.inviting-employee.title' | translate }}
+      </h1>
       <div class="list">
         <div class="list-item">
-          <p class="list-item-title">Name</p>
+          <p class="list-item-title">
+            {{ 'guest-details-component.second-column.inviting-employee.name' | translate }}
+          </p>
           <p class="list-item-value">{{ currentGuest.invitedByName }}</p>
         </div>
       </div>
     </div>
     <div class="cheking-details">
-      <h1>Documents</h1>
+      <h1>{{ 'guest-details-component.second-column.documents' | translate }}</h1>
       <div class="list">
         <div class="list-item">
           <p>-</p>

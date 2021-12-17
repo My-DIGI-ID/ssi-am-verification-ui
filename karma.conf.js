@@ -27,7 +27,37 @@ module.exports = function (config) {
     coverageReporter: {
       dir: require('path').join(__dirname, './coverage/ssi-am-verification-ui'),
       subdir: '.',
-      reporters: [{ type: 'html' }, { type: 'text-summary' }],
+      reporters: [
+        {
+          type: 'html',
+        },
+        {
+          type: 'text-summary',
+        },
+        {
+          type: 'lcov',
+        },
+      ],
+      check: {
+        emitWarning: true,
+        global: {
+          // overall code base
+          statements: 60,
+          branches: 60,
+          functions: 60,
+          lines: 60,
+          excludes: [],
+        },
+        each: {
+          // per file
+          statements: 60,
+          branches: 60,
+          functions: 60,
+          lines: 60,
+          excludes: [],
+          overrides: {},
+        },
+      },
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,

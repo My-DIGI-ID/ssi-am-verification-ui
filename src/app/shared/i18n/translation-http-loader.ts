@@ -1,4 +1,4 @@
-/*!
+/*
  * Copyright 2021 Bundesrepublik Deutschland
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,18 +14,17 @@
  * limitations under the License.
  */
 
-:host {
-  display: flex;
-  flex-direction: column;
-  width: 25%;
-}
+import { HttpClient } from '@angular/common/http';
+import { TranslateLoader } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
+import ConfigInitService from '../../core/authentication/config-init.service';
 
-div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+export default class TranslationHttpLoader implements TranslateLoader {
+  public constructor(private http: HttpClient, private readonly configService: ConfigInitService) {}
 
-  p:nth-of-type(1) {
-    font-weight: 600;
+  public getTranslation(language: string): Observable<any> {
+    return this.http.get<any>(
+      `${this.configService.getConfigStatic().VERIFICATION_CONTROLLER_BASE_URL}/admin/i18n?languageCode=${language}`
+    );
   }
 }

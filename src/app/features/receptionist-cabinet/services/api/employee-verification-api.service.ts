@@ -19,17 +19,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import ConfigInitService from '../../../../core/authentication/config-init.service';
-import VerificationApiModel from '../../models/verification-api.model';
 
 /**
- * Class representing the Guest Verification API service
+ * Class representing the Employee Verification API service
  * @export
- * @class GuestVerificationApiService
+ * @class EmployeeVerificationApiService
  */
 @Injectable({
   providedIn: 'root',
 })
-export default class GuestVerificationApiService {
+export default class EmployeeVerificationApiService {
   public httpHeader = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -37,25 +36,26 @@ export default class GuestVerificationApiService {
   };
 
   /**
-   * Creates an instance of GuestVerificationApiService.
+   * Creates an instance of EmployeeVerificationApiService.
    * @param {HttpClient} http - Service that performs http requests.
    * @param {ConfigInitService} configServie - Service that retrieves the application configuration.
-   * @memberof GuestVerificationApiService
+   * @memberof EmployeeVerificationApiService
    */
   public constructor(private readonly http: HttpClient, private readonly configServie: ConfigInitService) {}
 
   /**
-   * HTTP GET request that get all guests
-   * @return {Observable<VerificationApiModel[]>} - Obserable with array of verification api model
-   * @memberof GuestVerificationApiService
+   *
+   * HTTP GET request that get all employee
+   * @return {Observable<any[]>} - Obserable with array of verification api model
+   * @memberof EmployeeVerificationApiService
    */
-  public getAllGuests(): Observable<VerificationApiModel[]> {
+  public getAllEmployees(): Observable<any[]> {
     const baseUrl = this.configServie.getConfigStatic().VERIFICATION_CONTROLLER_BASE_URL;
     const locationId = this.configServie.getConfigStatic().LOCATION_ID;
     const terminalId = this.configServie.getConfigStatic().TERMINAL_ID;
 
-    return this.http.get<VerificationApiModel[]>(
-      `${baseUrl}/api/v2/guest/verification-process-completion?locationId=${locationId}&terminalId=${terminalId}`
+    return this.http.get<any[]>(
+      `${baseUrl}/api/v2/employee/verification-process-completion?locationId=${locationId}&terminalId=${terminalId}`
     );
   }
 }

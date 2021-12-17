@@ -1,32 +1,67 @@
+/*
+ * Copyright 2021 Bundesrepublik Deutschland
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 /* eslint-disable no-console */
 import { Observable, interval } from 'rxjs';
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-unused-vars */
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import AbstractStore from '../../../../shared/abstractions/store.abstract';
 import GuestVerificationApiService from '../api/guest-verification-api.service';
 import VerificationApiModel from '../../models/verification-api.model';
 import GuestDetailsViewModel from '../../models/guest-details-view.model';
 
+/**
+ * Class representing the GuestStoreService
+ * @export
+ * @class GuestStoreService
+ * @extends {AbstractStore<GuestDetailsViewModel[]>}
+ */
 @Injectable({
   providedIn: 'root',
 })
 export default class GuestStoreService extends AbstractStore<GuestDetailsViewModel[]> {
-  private guestVerificationApiService: GuestVerificationApiService;
-
-  constructor(private _guestVerificationApiService: GuestVerificationApiService, private router: Router) {
+  /**
+   * Creates an instance of GuestStoreService.
+   * @param {GuestVerificationApiService} guestVerificationApiService - guestVerificationApiService - contains guest related functions
+   * @memberof GuestStoreService
+   */
+  public constructor(private guestVerificationApiService: GuestVerificationApiService) {
     super();
-    this.guestVerificationApiService = _guestVerificationApiService;
   }
 
+  /**
+   * Instantiates the store: calling the getAllGuests and converting the apiModel to the viewModel
+   * @todo - refactor
+   * @protected
+   * @return {Observable<GuestDetailsViewModel[]>} - viewModel which is used in the guestView
+   * @memberof GuestStoreService
+   */
   protected buildStore(): any {
     return this.guestVerificationApiService
       .getAllGuests()
       .pipe(map((apiModel: VerificationApiModel[]) => this.mapGuestApiModelToViewModelArray(apiModel)));
   }
 
+  /**
+   * Pulling mechanism, which is doing a query every 10000 second.
+   * @param {string} action - which should be stop, or something else string
+   * @memberof GuestStoreService
+   */
   public refetchGuests(action: string): void {
     const requestInterval = interval(10000).subscribe({
       next: () =>
@@ -40,6 +75,11 @@ export default class GuestStoreService extends AbstractStore<GuestDetailsViewMod
     }
   }
 
+  /**
+   * Get all guests function
+   * @return {*}  {Observable<GuestDetailsViewModel[]>} - calling the getAllGuests and converting the apiModel to the viewModel
+   * @memberof GuestStoreService
+   */
   public getGuests(): Observable<GuestDetailsViewModel[]> {
     return this.guestVerificationApiService
       .getAllGuests()
@@ -56,7 +96,7 @@ export default class GuestStoreService extends AbstractStore<GuestDetailsViewMod
         arriving: this.getTimeFromIsoString(guest.checkInDateTime),
         leaving: this.getDepartedDateTime(guest.checkOutDateTime),
         location: guest.guestCredential.location,
-        status: this.mapVisitState(guest.state),
+        status: guest.state,
         company: guest.guestCredential.companyName,
         companyAddress: this.getGuestCompanyAddress(
           guest.guestCredential.companyCity,
@@ -112,17 +152,5 @@ export default class GuestStoreService extends AbstractStore<GuestDetailsViewMod
     }
 
     return date + this.getTimeFromIsoString(date_);
-  }
-
-  private mapVisitState(apiState: string): string {
-    if (apiState === 'CHECK_IN') {
-      return 'In Building';
-    }
-
-    if (apiState === 'CHECK_OUT') {
-      return 'Departed';
-    }
-
-    return '-';
   }
 }

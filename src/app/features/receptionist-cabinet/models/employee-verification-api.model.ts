@@ -21,17 +21,26 @@
  * and make sure conversion logic lives in one place and is predictable.
  * Should not contain anything other than interface implementation or factory methods
  */
-export default class EmployeeCredentialApiModel {
-  firstName!: string; // non-null assertion operator
-
-  lastName!: string;
-
+export default class EmployeeVerificationApiModel {
   id!: string;
 
-  email?: string;
+  employeeCredential?: {
+    companyCity: string;
+    companyName: string;
+    companyPostalCode: string;
+    companyStreet: string;
+    email: string;
+    employeeId: string;
+    employeeState: string;
+    firstName: string;
+    lastName: string;
+    position: string;
+    primaryPhoneNumber: string;
+    secondaryPhoneNumber: string;
+    title: string;
+  };
 
-  position?: string;
+  state?: string;
 
-  firmName?: string;
-  // WIP
+  checkInDateTime?: string;
 }

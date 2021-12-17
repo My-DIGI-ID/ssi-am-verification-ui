@@ -1,22 +1,46 @@
+<!--
+  ~ Copyright 2021 Bundesrepublik Deutschland
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
 <div class="title-line">
-  <h1>Gästeübersicht</h1>
+  <div class="title-switch">
+    <h1>{{ 'receptionist-cabinet-component.title' | translate }}</h1>
+
+    <div class="title-switch-line" (click)="goToEmployeeDashboard()">
+      <mat-icon class="switch-icon">repeat</mat-icon>
+      <p>{{ 'receptionist-cabinet-component.switch-title' | translate }}</p>
+    </div>
+  </div>
+
   <div class="title-buttons">
-    <button type="button" mat-flat-button color="primary" id="verify-employee-button" (click)="goToQRCode('employee')">
-      Mitarbeiterverifizierung
+    <button type="button" mat-flat-button color="primary" id="verify-guest-button" (click)="goToQRCode('guest')">
+      <span class="material-icons" id="verify-guest-icon"> qr_code_2 </span>
+      {{ 'receptionist-cabinet-component.guest-verification' | translate }}
     </button>
-    <span class="material-icons" id="verify-guest-button" (click)="goToQRCode('guest')"> qr_code_2 </span>
   </div>
 </div>
 
 <mat-tab-group animationDuration="0ms" (selectedTabChange)="tabClick($event)">
-  <mat-tab label="Angekommen ({{ inBuilding }})"></mat-tab>
-  <mat-tab label="Abgereist ({{ departed }})"></mat-tab>
+  <mat-tab label="{{ 'receptionist-cabinet-component.arrived' | translate }} ({{ inBuilding }})"></mat-tab>
+  <mat-tab label="{{ 'receptionist-cabinet-component.departed' | translate }} ({{ departed }})"></mat-tab>
 </mat-tab-group>
 
 <div class="table-row">
   <div class="table-header-row">
     <mat-form-field appearance="outline" [ngClass]="{ hide: true }">
-      <mat-label>Bitte wählen Sie ein Datum aus</mat-label>
+      <mat-label>{{ 'receptionist-cabinet-component.select-date-label' | translate }}</mat-label>
       <input
         matInput
         [matDatepicker]="picker"
@@ -35,44 +59,72 @@
   </div>
   <table mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="firstName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Vorname</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ 'receptionist-cabinet-component.first-name' | translate }}
+      </th>
       <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
     </ng-container>
     <ng-container matColumnDef="lastName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nachname</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ 'receptionist-cabinet-component.last-name' | translate }}
+      </th>
       <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
     </ng-container>
     <ng-container matColumnDef="arriving">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Ankunftszeit</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ 'receptionist-cabinet-component.arriving' | translate }}
+      </th>
       <td mat-cell *matCellDef="let element">{{ element.arriving }}</td>
     </ng-container>
     <ng-container matColumnDef="leaving">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Abreisezeit</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ 'receptionist-cabinet-component.leaving' | translate }}
+      </th>
       <td mat-cell *matCellDef="let element">{{ element.leaving }}</td>
     </ng-container>
     <ng-container matColumnDef="invitedByName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Eingeladen von</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ 'receptionist-cabinet-component.invited-by' | translate }}
+      </th>
       <td mat-cell *matCellDef="let element">{{ element.invitedByName }}</td>
     </ng-container>
     <ng-container matColumnDef="location">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Gebäude</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ 'receptionist-cabinet-component.location' | translate }}
+      </th>
       <td mat-cell *matCellDef="let element">{{ element.location }}</td>
     </ng-container>
     <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-      <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ 'receptionist-cabinet-component.status' | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <p *ngIf="element.status === 'CHECK_IN'">
+          {{ 'receptionist-cabinet-component.guest-status.check-in' | translate }}
+        </p>
+        <p *ngIf="element.status === 'CHECK_OUT'">
+          {{ 'receptionist-cabinet-component.guest-status.check-out' | translate }}
+        </p>
+      </td>
     </ng-container>
     <ng-container matColumnDef="actionMenu">
       <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
       <td mat-cell *matCellDef="let element" (click)="goToGuestDetails(element.id)">
-        <mat-icon aria-hidden="false" aria-label="Go to guest details">chevron_right</mat-icon>
+        <mat-icon
+          aria-hidden="false"
+          attr.aria-label="{{ 'receptionist-cabinet-component.go-to-guest-details-label' | translate }}"
+          >chevron_right
+        </mat-icon>
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" colspan="7">Keine Daten entsprechen Ihrer Auswahl "{{ input.value }}"</td>
+      <td class="mat-cell" colspan="8">
+        {{ 'receptionist-cabinet-component.no-data' | translate }} "<span *ngIf="input.value">{{ input.value }}</span
+        >"
+      </td>
     </tr>
   </table>
-  <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator> -->
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" [length]="dataSourceLength" [pageSize]="5"></mat-paginator>
 </div>

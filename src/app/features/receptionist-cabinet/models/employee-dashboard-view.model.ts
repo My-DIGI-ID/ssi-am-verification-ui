@@ -14,47 +14,21 @@
  * limitations under the License.
  */
 
-export default class GuestCredentialApiModel {
+/**
+ * Data model for displaying employee credential, in employee dashboard
+ */
+export default class EmployeeDashboardViewModel {
+  id!: string;
+
+  employeeId?: string;
+
   firstName!: string;
 
   lastName!: string;
 
-  // TODO: correct to title, if the BE corrected
-  titel!: string;
-
-  email!: string;
-
-  primaryPhoneNumber!: string;
-
-  secondaryPhoneNumber!: string;
-
-  companyName!: string;
-
-  typeOfVisit!: string;
-
   location!: string;
 
-  validFromDate!: string;
+  status?: string;
 
-  validFromTime!: string;
-
-  validUntilDate!: string;
-
-  validUntilTime!: string;
-
-  invitedBy!: string;
-
-  dateOfBirth!: string;
-
-  licensePlateNumber!: string;
-
-  companyCity!: string;
-
-  companyStreet!: string;
-
-  companyPostCode!: string;
-
-  referenceBasisId!: string;
-
-  referenceEmployeeId!: string;
+  updated?: string;
 }
